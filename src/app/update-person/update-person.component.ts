@@ -32,9 +32,13 @@ export class UpdatePersonComponent implements OnInit {
 
   updateperson() {
     this.personService.updatePerson(this.id, this.person)
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {console.log(data); this.gotoList();
+          },error => {
+            console.log(error);
+            this.gotoList();
+          });
     this.person = new Person();
-    this.gotoList();
+    //this.gotoList();
   }
 
   onSubmit() {
